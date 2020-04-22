@@ -27,6 +27,6 @@ class MyCfg extends TaintTracking::Configuration {
     }
 }
 
-from DataFlow::Node source, DataFlow::Node sink, MyCfg conf
-where conf.hasFlow(source, sink)
-select source, sink, conf
+from MyCfg cfg, DataFlow::PathNode source, DataFlow::PathNode sink
+where cfg.hasFlowPath(source, sink)
+select sink, source, sink, "Network byte swap flows to memcpy"
